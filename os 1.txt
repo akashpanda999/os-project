@@ -1,6 +1,23 @@
-#include <unistd.h> 
-#include <stdlib.h> 
-#include <stdio.h> 
-#include <sys/types.h> 
-#include <sys/ipc.h> 
-#include <sys/sem.h>
+#include<stdio.h>
+#include<stdbool.h>
+
+struct requirement
+{
+	bool pen;
+	bool paper;
+	bool question_paper;
+	bool all_three;
+}s[3];
+
+int main()
+{
+	s[0].pen=1;							// first student has pen
+	s[1].paper=1;						// second student has paper
+	s[2].question_paper=1;				// third student has question paper
+	
+	while(s[0].all_three==0||s[1].all_three==0||s[2].all_three==0)
+	{
+	int ch1,ch2;
+	printf("\n\tThings: \n\t1.PEN\n\t2.PAPER\n\t3.QUESTION PAPER\n\nEnter the two things which is to be placed on the shared table:\n");
+	scanf("%d",&ch1);
+	scanf("%d", &ch2);
